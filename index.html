@@ -16,12 +16,12 @@
   </head>
   <body>
     <nav>
-      <div class="nav-wrapper teal accent-3">
+      <div class="nav-wrapper purple darken-4">
         <div class="container">
           <a href="#" class="brand-logo center"> Calorie Checker </a>
           <ul class="right">
             <li>
-              <a href="" class="a clear-btn btn red lighten-1">Delete All</a>
+              <a href="" class="a clear-btn btn purple darken-2">Delete All</a>
             </li>
           </ul>
         </div>
@@ -35,16 +35,16 @@
           <form action="" class="col">
             <div class="row">
               <div class="input-filed col s6">
-                <input type="text" placeholder="Add A Meal" id="meal-name" />
                 <label for="meal-name">Meal</label>
+                <input type="text" placeholder="Add A Meal" id="meal-name" />
               </div>
               <div class="input-filed col s6">
+                <label for="meal-calories">Calories</label>
                 <input
                   type="text"
                   placeholder="Add Calories"
                   id="meal-calories"
                 />
-                <label for="meal-calories">Calories</label>
               </div>
               <button class="add-btn btn  amber darken-4">
                 <i class="tiny material-icons">add</i> Add Meal
@@ -67,7 +67,9 @@
       </div>
 
       <!-- Calorie Count -->
-      <h4 class="center-align">Total Calories: <span class="total-calories">0</span></h4>
+      <h4 class="center-align">
+        Total Calories: <span class="total-calories">0</span>
+      </h4>
       <ul id="meal-list" class="collection">
         <!-- <li class="collection-item" id="item-0"> 
           <strong>Steak Dinner: </strong> <em>120 Calories</em>

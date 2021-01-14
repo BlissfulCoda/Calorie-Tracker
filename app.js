@@ -2,7 +2,7 @@
 
 // Meal Controller
 const MealCtrl = (function(){
-    const Item = function(id, name, calories){
+    const Meal = function(id, name, calories){
         this.id = id;
         this.name = name;
         this.calories = calories;
@@ -19,6 +19,7 @@ const MealCtrl = (function(){
         totalCalories: 0
     }
 
+    // Public Methods
     return {
         state: state
     }
