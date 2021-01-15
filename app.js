@@ -24,6 +24,9 @@ const MealCtrl = (function() {
     getMeals: function() {
       return state.meals;
     },
+    addItem: function(names, calories){
+      console.log(names, calories)
+    },
     state: state
   };
 })();
@@ -33,8 +36,13 @@ const MealCtrl = (function() {
 // UI Controller
 const UICtrl = (function() {
   const UISelectors = {
-    mealList: '#meal-list'
+    mealList: '#meal-list',
+    addBtn: '.add-btn',
+    mealNameInput: '#meal-name',
+    mealCaloriesInput: '#meal-calories'
   };
+
+
   return {
     populateMealList: function(meals) {
       let html = '';
@@ -50,6 +58,12 @@ const UICtrl = (function() {
       });
       document.querySelector(UISelectors.mealList).innerHTML = html;
     },
+    getMealInput: function(){
+        return {
+            name: document.querySelector(UISelectors.mealNameInput).value,
+            calories: document.querySelector(UISelectors.mealCaloriesInput).value
+        }
+    },
     getSelectors: function(){
         return UISelectors;
     }
@@ -60,14 +74,24 @@ const UICtrl = (function() {
 const App = (function(MealCtrl, UICtrl) {
   const loadEventListeners = () => {
       const UISelectors = UICtrl.getSelectors();
-      document.querySelector('.add-btn')
+      document.querySelector(UISelectors.addBtn).addEventListener('click', mealSubmit)
   };
+
+  const mealSubmit = function(e){
+      const input = UICtrl.getMealInput();
+      if(input.name !== '' && input.calories !== ''){
+       const newItem = MealCtrl.addItem(input.name, input.calories);
+      }
+
+    e.preventDefault();
+  }
 
   return {
     init: function() {
       // Collect meals from init state
       const meals = MealCtrl.getMeals();
       UICtrl.populateMealList(meals);
+      loadEventListeners()
     }
   };
 })(MealCtrl, UICtrl);
