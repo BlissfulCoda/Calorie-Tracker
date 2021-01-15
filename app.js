@@ -25,9 +25,22 @@ const MealCtrl = (function() {
       return state.meals;
     },
     addItem: function(names, calories){
-      console.log(names, calories)
+      let ID;
+      if(state.meals.length > 0){
+        ID = state.meals[state.meals.length - 1].id + 1;
+      } else {
+        ID = 0;
+      }
+
+      calories = parseInt(calories)
+      newMeal = new Meal(ID, name, calories)
+      state.meals.push(newMeal);
+
+      return newMeal;
     },
-    state: state
+    logState: function(){
+      return state;
+    }
   };
 })();
 
